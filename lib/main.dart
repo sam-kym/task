@@ -1,6 +1,8 @@
+import 'package:action/features/apple_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import 'cv.dart';
+import 'features/product.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,14 +11,14 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'CV App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: SafeArea(
-        child: CVView(),
+    return ChangeNotifierProvider(
+      create: (context) => AppleProvider(),
+      child: MaterialApp(
+        title: 'Product Inventory App',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: MyHomePage(),
       ),
     );
   }
